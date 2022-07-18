@@ -7,6 +7,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import com.cucumberFramework.enums.Browsers;
 import com.cucumberFramework.enums.OS;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
 
 public class TestBase {
 
@@ -24,8 +27,10 @@ public class TestBase {
 				driver = new FirefoxDriver();
 			}
 		} else if (System.getProperty("os.name").toLowerCase().contains(OS.MAC.name().toLowerCase())) {
+			
 			if (browser.equalsIgnoreCase(Browsers.CHROME.name())) {
 				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver");
+				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
 			} else if (browser.equalsIgnoreCase(Browsers.FIREFOX.name())) {
 				System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/src/test/resources/drivers/geckodriver");

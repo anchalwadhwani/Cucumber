@@ -7,9 +7,11 @@ import com.cucumberFramework.helper.WaitHelper;
 import com.cucumberFramework.pageObjects.LoginLogoutPage;
 import com.cucumberFramework.testBase.TestBase;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+
 
 
 public class loginLogoutPageStepDefinitions extends TestBase {
@@ -109,5 +111,12 @@ public class loginLogoutPageStepDefinitions extends TestBase {
 	    loginPage.itemSearchField.submit();
 	    Thread.sleep(5000);
 	}
+	
+	@Then("^Click on Hamburger Menu$")
+	public void i_Click_on_Hamburger_Menu() throws Throwable {
+		loginPage.clickContinueButton();
+		waitHelper.WaitForElement(loginPage.password, 60);
+	}
+
 	
 }
